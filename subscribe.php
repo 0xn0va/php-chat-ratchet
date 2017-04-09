@@ -24,22 +24,22 @@ if (isset($_POST['btn-signup'])) {
 
     if ($email && $email != '') {
         $inputdomain = end(explode('@', $email));
-        $domains = array("gmail.com", "hotmail.com", "yahoo.com");
+        $domains = array("hotmail.com", "yahoo.com");
         if (in_array($inputdomain, $domains)) {
             $msg = "
-		      <div class='alert alert-error'>
-				<button class='close' data-dismiss='alert'>&times;</button>
+          <div class='alert alert-error'>
+        <button class='close' data-dismiss='alert'>&times;</button>
                     Ouch, sorry for this but you can only login with corporate email address
-			  </div>
-			  ";
+        </div>
+        ";
         } else {
             if ($result->rowCount() > 0) {
                 $msg = "
-		      <div class='alert alert-error'>
-				<button class='close' data-dismiss='alert'>&times;</button>
-					 Your data is with us, don't register again, please login instead!
-			  </div>
-			  ";
+          <div class='alert alert-error'>
+        <button class='close' data-dismiss='alert'>&times;</button>
+           Your data is with us, don't register again, please login instead!
+        </div>
+        ";
             } else {
                 if ($new_msg->form($username, $email, $password, $salt, $verification)) {
                     $id = $new_msg->lastID();
@@ -47,22 +47,22 @@ if (isset($_POST['btn-signup'])) {
                     $id = $key;
 
                     $message = "
-						Hey $username,
-						<br />
-						You subscribed!<br/>
-						You just need to click on the following link to verify your email<br/>
-						<a href='http://localhost/liana/abdo/verification.php?id=$id&code=$verification'>CLICK ON ME!</a><br />
-						Best Regards,";
+            Hey $username,
+            <br />
+            You subscribed!<br/>
+            You just need to click on the following link to verify your email<br/>
+            <a href='http://localhost/liana/abdo/verification.php?id=$id&code=$verification'>CLICK ON ME!</a><br />
+            Best Regards,";
 
                     $subject = "Verify Subscription";
 
                     $new_msg->send_mail($email, $message, $subject);
                     $msg = "
-					<div class='alert alert-success'>
-						<button class='close' data-dismiss='alert'>&times;</button>
-						<strong>Thats it!, we just sent an email to the address you just entered, please verify your email</strong>
-			  		</div>
-					";
+          <div class='alert alert-success'>
+            <button class='close' data-dismiss='alert'>&times;</button>
+            <strong>Thats it!, we just sent an email to the address you just entered, please verify your email</strong>
+            </div>
+          ";
                 } else {
                     echo "Ouch, something is wrong! :(";
                 }
