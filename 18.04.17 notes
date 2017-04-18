@@ -1,0 +1,11 @@
+IMPORTANT FOR ABDO
+
+Before implementing updated files to the production:
+
+1. Run the code from "sql-update" file.
+2. Unzip "ratchat.zip". The folder "ratchat" should be in the same directory as "dashboard.php".
+3. Uncomment php code in the beginning of "dashboard.php".
+4. Replace the database connection settings in the beginning of "ratchat.php".
+5. There's a possibility to replace 'testuser' with your current username, look at the js function StartChat() in the "dashboard.php".
+
+Then just delete this file :)
