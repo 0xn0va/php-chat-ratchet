@@ -1,9 +1,0 @@
-/* the tabel that is currently used for the chat */
-
-Create Table msg (
-	msgid int primary key auto_increment,
-	userid varchar(32) not null default '[nobody]',
-	time timestamp not null default current_timestamp,
-	chanid varchar(32) not null default '0',
-	msg varchar(256) not null default ''
-);
