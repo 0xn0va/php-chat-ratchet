@@ -80,6 +80,9 @@ if (isset($_POST['btn-signup'])) {
   <title>Subscribe</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link href="resources/css/style.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet prefetch" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+  <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto+Slab'>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -90,44 +93,66 @@ if (isset($_POST['btn-signup'])) {
       <style type="text/css">
 
        body {
-            background-image: url("resources/1.png");
-            background-size: cover;
-            font-family: "Calibri", "Roboto", sans-serif;
-        }
+        background-image: url("resources/1.png");
+        background-size: cover;
+        font-family: "Roboto Slab", "Calibri", sans-serif;
+    }
 
-        .form-signin-heading {
-            font-style: bold;
-            font-weight: 500;
-            color: #edeff2;
-        }
+    .form-signin-heading {
+        font-style: bold;
+        font-weight: 500;
+        color: #edeff2;
+    }
 
-        a {
-            color: #edeff2;
-        }
+    .form-signin-heading, .btn {
+        text-shadow: 0 1px 3px rgba(0,0,0,.5);
 
-         .btn:hover {
-            color: #de2a3d;
-        }
+    }
 
-        .btn-primary {
-            background-color: #edeff2;
-            color: #de2a3d;
-        }
+    a {
+        color: #edeff2;
+    }
 
-        .btn-primary:hover {
-            color: #edeff2;
-             background-color: #de2a3d;
-            border-color: #edeff2;
-        }
+    .btn {
+        font-size: 18px;
+    }
 
-       
 
-        .form-signin .form-control {
-            color: #de2a3d;
-            font-size: 18px;
-        }
+    .btn:hover {
+        color: #de2a3d;
+    }
 
-    </style>
+    .btn-primary {
+        background-color: #edeff2;
+        color: #de2a3d;
+    }
+
+    .btn-primary:hover {
+        color: #edeff2;
+        background-color: #de2a3d;
+        border-color: #edeff2;
+    }
+
+
+
+    .form-signin .form-control {
+        color: #de2a3d;
+        font-size: 16px;
+    }
+
+    .form-group {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+    .form-group .fa {
+      position: absolute;
+      right: 15px;
+      top: 17px;
+      color: #999;
+}
+
+</style>
 </head>
 <body id="login">
     <div class="container">
@@ -135,18 +160,33 @@ if (isset($_POST['btn-signup'])) {
         <form class="form-signin" method="post">
 
             <h2 class="form-signin-heading">Subscribe</h2>
-            <label for="inputName" class="sr-only">Name</label>
-            <input type="text" class="form-control" placeholder="Name" name="input_name" required autofocus>
-            <label for="inputEmail" class="sr-only">Email address</label>
-            <input type="email" class="form-control" placeholder="Email address" name="input_email" required>
-            <label for="inputPassword" class="sr-only">Password</label>
-            <input type="password" class="form-control" placeholder="Password" name="input_password" required>
+            <div class="form-group">
+                <label for="inputName" class="sr-only">Name</label>
+                <input type="text" class="form-control" placeholder="Name" name="input_name" required>
+                <i class="fa fa-user"></i>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="email" class="form-control" placeholder="Email address" name="input_email" required>
+                <i class="fa fa-envelope"></i>
+
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="input_password" required>
+                <i class="fa fa-lock"></i>
+            </div>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit" name="btn-signup">Subscribe</button>
-            <a href="index.php" style="float:right;" class="btn btn-large">Login</a>
+
+            <a href="login.php" style="float:right;" class="btn btn-large">Login</a>
 
         </form>
+
     </div>
-    <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>
