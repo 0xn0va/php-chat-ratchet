@@ -31,11 +31,11 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     <![endif]-->
 		<script>
 			var chat = new RatChat();
-		
+
 		function StartChat () {
 				chat.setInput( document.getElementById('newmsg') );
 				chat.setOutput( document.getElementById('chatbox') );
-				chat.setNick( 'testuser');//<?php echo $row['u_Name']; ?>);
+				chat.setNick( '<?php echo $row['u_Name']; ?>');
 				chat.setChannel('room1');
 				chat.startPolling();
 			}
@@ -43,10 +43,10 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		<style>
 				.chatbox {
-			height: 200px; 
-			overflow: auto; 
-			border: 1px solid darkgrey; 
-			background: white; 
+			height: 200px;
+			overflow: auto;
+			border: 1px solid darkgrey;
+			background: white;
 			border-radius: 5px; }
 				.chatcontainer {
 			height: 500px;
@@ -114,7 +114,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <div class="chatcontainer">
 				<div id="chatbox" class="chatbox"></div>
 				<form action="" method="post">
-					<input id="newmsg"> 
+					<input id="newmsg">
 					<input type="button" value="Send" onclick="sendMsg()">
 				</form>
 </div>
@@ -131,7 +131,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
    					<option value="room1">1</option>
     				<option value="room2">2</option>
    				</select><br>
-   			  <button onclick="">Go</button> 
+   			  <button onclick="">Go</button>
 				</form>
 				</div>
 </div>
