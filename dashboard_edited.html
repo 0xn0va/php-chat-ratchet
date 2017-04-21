@@ -17,7 +17,6 @@
         min-height: 800px;
         padding-top: 70px;
         font-size: 16px;
-         
     }
     
     .jumbotron {
@@ -36,23 +35,24 @@
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        display: inline;
-        border: 8px solid red;
+        display: inline-block;
+        border: 8px solid #de2a3d;
         float: right;
     }
     
-    li {
-        display: list-item;
-        text-align: -webkit-match-parent;
-    }
-    
+   
     .chat_window {
         padding: 0px;
+    }
+
+    .users {
+        list-style: none;
     }
     
     .online_status {
         display: inline-block;
-        width: 150px;
+        width: calc(100% - 10px);
+        min-width: 100px;
         height: 50px;
         border-radius: 20px;
         background-color: #edeff2;
@@ -60,7 +60,7 @@
         border: 1px solid #bcbdc0;
         line-height: 48px;
         font-size: 18px;
-        font-weight: 300;
+        float: right;
     }
     </style>
 </head>
@@ -83,13 +83,10 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Dashboard</a></li>
                     <li><a href="#">Choose a chat room</a></li>
-                    <li>
-                        <a href="#"></a>
-                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -122,37 +119,32 @@
                     </li>
                 </div>
             </div>
-            <!-- <div class="col-sm-3  col-sm-offset-1 sidebar">
-                <ul>
-                    <li class="online_status">
-                    
-                        User 1 is online
-                        <span class="avatar_border"></span>
+            <div class="col-sm-3  col-sm-offset-1 sidebar">
+                <ul class="users">
+                    <li class="online">
+                        <div class="online_status">User 1 is online</div>
+                        <div class="avatar_border"></div>
                     </li>
-
-                    <li class="online_status">
-                        User 2 is online
-                    <span class="avatar_border"></span>
+                    <li class="online">
+                        <div class="online_status">User 2 is online</div>
+                        <div class="avatar_border"></div>
                     </li>
-
-                    <li> class="online_status">
-                        User 3 is online
-                    <span class="avatar_border"></span>
+                    <li class="online">
+                        <div class="online_status">User 3 is online</div>
+                        <div class="avatar_border"></div>
                     </li>
-
-                    <li class="online_status">
-                        User 4 is online
-                    <span class="avatar_border"></span>
+                    <li class="online">
+                        <div class="online_status">User 4 is online</div>
+                        <div class="avatar_border"></div>
                     </li>
-
                 </ul>
-            </div> -->
+            </div>
         </div>
     </div>
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="chat.js"></script>
+    <!-- <script type="text/javascript" src="chat.js"></script> -->
 </body>
 
 </html>
