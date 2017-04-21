@@ -1,4 +1,4 @@
-<!--?php
+<?php
 
 
 session_start();
@@ -14,7 +14,7 @@ $stmt = $user_home->runQuery("SELECT * FROM users WHERE u_ID=:uid");
 $stmt->execute(array(":uid" => $_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-?-->
+?>
 
 <!DOCTYPE html>
 <html class="no-js">
