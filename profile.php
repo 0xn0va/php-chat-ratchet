@@ -11,7 +11,7 @@
     * {
         box-sizing: border-box;
     }
-    
+
     body {
         min-height: 800px;
         padding-top: 70px;
@@ -19,20 +19,20 @@
         background-color: #edeff2;
         font-family: "Calibri", "Roboto", sans-serif;
     }
-    
+
     .avatar {
         width: 220px;
         height: 220px;
         border-radius: 50%;
         background-color: #de2a3d;
     }
-    
+
     .user_info {
         padding: 15px;
         border-radius: 6px;
         background-color: #f8f8f8;
     }
-    
+
     .online_status {
         display: inline-block;
         width: calc(100% - 85px);
@@ -46,7 +46,7 @@
         font-size: 18px;
         font-weight: 300;
     }
-    
+
     .btn-save {
         width: 140px;
         height: 50px;
@@ -61,7 +61,7 @@
         float: right;
         line-height: 2.8;
     }
-    
+
     .btn-save:hover {
         background-color: #edeff2;
         color: #de2a3d;
@@ -87,7 +87,6 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="dashboard_edited.html">Dashboard</a></li>
-                    <li><a href="#">Choose a chat room</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#">Profile</a></li>

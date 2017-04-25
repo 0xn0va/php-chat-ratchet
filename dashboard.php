@@ -1,146 +1,115 @@
 <?php
-
-
 session_start();
-
 require_once 'main.php';
 $user_home = new main();
-
 if (!$user_home->is_logged_in()) {
-    $user_home->redirect('index.php');
+	$user_home->redirect('index.php');
 }
-
 $stmt = $user_home->runQuery("SELECT * FROM users WHERE u_ID=:uid");
 $stmt->execute(array(":uid" => $_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
 ?>
-
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title><?php echo $row['u_Email']; ?></title>
-    <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="resources/css/style.css" rel="stylesheet" media="screen">
-		<script src="ratchat/ajax.js" type="text/javascript"></script>
-		<script src="ratchat/ratax.js" type="text/javascript"></script>
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-		<script>
-			var chat = new RatChat();
-
-		function StartChat () {
-				chat.setInput( document.getElementById('newmsg') );
-				chat.setOutput( document.getElementById('chatbox') );
-				chat.setNick( '<?php echo $row['u_Name']; ?>');
-				chat.setChannel('room1');
-				chat.startPolling();
-			}
-		</script>
-
-		<style>
-				.chatbox {
-			height: 200px;
-			overflow: auto;
-			border: 1px solid darkgrey;
-			background: white;
-			border-radius: 5px; }
-				.chatcontainer {
-			height: 500px;
-			background: blue;
-			width: 70%;
-			float: left;
-			margin-left: auto;
-			margin-right: auto; }
-				.toolscontainer {
-			height: 500px;
-			background: green;
-			width: 29%;
-			float: right;
-			margin-left: auto;
-			margin-right: auto; }
-				.selectchannel {
-			width: 100%;
-			height: 30%;
-			background: red; }
-				#newmsg {
-			width: 90%; }
-				.sendbtn {
-			width: 9%; }
-
-				.timestamp {
-			font-size: 16px;
-			padding-right: 5px;
-			padding-left: 5px;
-			background: #AAAAAA;
-			display: inline-block;
-			width: 10%;
-			color: #666666;}
-				.username {
-			font-weight: bold;
-			font-size: 16px;
-			background: #999999;
-			display: inline-block;
-			width: 90%;
-			padding-right: 5px;}
-				.msg {
-			background: #CCCCCC;
-			width: 100%;
-			font-size: 18px;
-			padding-left: 10px;}
-		</style>
-
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title><?php echo $row['u_Email']; ?></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="resources/css/style.css" rel="stylesheet" media="screen">
+	<script src="ratchat/ajax.js" type="text/javascript"></script>
+	<script src="ratchat/ratax.js" type="text/javascript"></script>
+	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script>
+	var chat = new RatChat();
+	function StartChat () {
+		chat.setInput( document.getElementById('newmsg') );
+		chat.setOutput( document.getElementById('chatbox') );
+		chat.setNick( '<?php echo $row['u_Name']; ?>');
+		chat.setChannel('room1');
+		chat.startPolling();
+	}
+	</script>
 </head>
 <body onLoad="StartChat ()">
-<div>
-  <div>
-     <div class="container-fluid">
-        <nav class="navbar navbar-default navbar-static-top">
-            <a class="navbar-brand" href="#">Dashboard</a>
-            <p class="navbar-text navbar-left">Hello,
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="http://www.oulucoders.com">Oulu Coders</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Dashboard</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="profile.html">Profile</a></li>
+					<li><a href="logout.php">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="jumbotron">
+			<h2>Hello, <?php echo $row['u_Name']; ?>! How are you today?</h2>
+		</div>
+		<div class="row">
+			<div class="col-sm-8 chat_window">
+				<div class="bottom_wrapper clearfix">
+					<div class="messages">
+						<div id="chatbox" class="chatbox"></div>
+						<form action="" method="post">
+							<input id="newmsg">
+							<input type="button" value="Send" onclick="sendMsg()">
+						</form>
+					</div>
+				</div>
+			</div>
 
-                <?php echo $row['u_Name']; ?>, your email is <?php echo $row['u_Email']; ?>
-                and you're verified, Thank you.
-
-            </p>
-            <a href="logout.php">
-                <button class="btn btn-danger">Logout</button>
-            </a>
-        </nav>
-
-<div class="chatcontainer">
-				<div id="chatbox" class="chatbox"></div>
-				<form action="" method="post">
-					<input id="newmsg">
-					<input type="button" value="Send" onclick="sendMsg()">
-				</form>
-</div>
-
-<div class="toolscontainer">
-				<!--This is the piece of code for changing the current room,
-				but I cannot figure out the way to make it work while running
-				the current session. I'm also going to add the function, which
-				will update the list of rooms. -->
-				<div class="selectchannel">
+		<div class="col-sm-3  col-sm-offset-1 sidebar">
+				<ul class="users">
+						<li class="online">
+								<div class="online_status">User 1 is online</div>
+<!--                         <div class="avatar_border"></div>
+-->                    </li>
+						<li class="online">
+								<div class="online_status">User 2 is online</div>
+<!--                         <div class="avatar_border"></div>
+-->                    </li>
+						<li class="online">
+								<div class="online_status">User 3 is online</div>
+<!--                         <div class="avatar_border"></div>
+-->                    </li>
+						<li class="online">
+								<div class="online_status">User 4 is online</div>
+<!--                         <div class="avatar_border"></div>
+-->                    </li>
+				</ul>
+		</div>
+		<!-- <div class="toolscontainer">
+			<div class="selectchannel">
 				<form action="" method="post">
 					<select size="3" name="channelbox" id="channelbox">
-    				<option disabled>Choose the chat room</option>
-   					<option value="room1">1</option>
-    				<option value="room2">2</option>
-   				</select><br>
-   			  <button onclick="">Go</button>
+						<option disabled>Choose the chat room</option>
+						<option value="room1">1</option>
+						<option value="room2">2</option>
+					</select><br>
+					<button onclick="">Go</button>
 				</form>
-				</div>
-</div>
-
-
-
-        </div>
-    </div>
-</div>
-<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+			</div>
+		</div> -->
+	</div>
+	</div>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- <script type="text/javascript" src="chat.js"></script> -->
 </body>
 </html>
