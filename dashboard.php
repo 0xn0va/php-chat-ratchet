@@ -50,7 +50,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 					<li class="active"><a href="#">Dashboard</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="profile.html">Profile</a></li>
+					<li><a href="profile.php">Profile</a></li>
 					<li><a href="logout.php">Logout</a></li>
 				</ul>
 			</div>
@@ -73,26 +73,35 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 				</div>
 			</div>
 
-		<div class="col-sm-3  col-sm-offset-1 sidebar">
+			<div class="col-sm-3  col-sm-offset-1 sidebar">
 				<ul class="users">
-						<li class="online">
-								<div class="online_status">User 1 is online</div>
-<!--                         <div class="avatar_border"></div>
--->                    </li>
-						<li class="online">
-								<div class="online_status">User 2 is online</div>
-<!--                         <div class="avatar_border"></div>
--->                    </li>
-						<li class="online">
-								<div class="online_status">User 3 is online</div>
-<!--                         <div class="avatar_border"></div>
--->                    </li>
-						<li class="online">
-								<div class="online_status">User 4 is online</div>
-<!--                         <div class="avatar_border"></div>
--->                    </li>
+					<li class="online">
+						<div class="online_status">User 1 is online</div>
+						<!--                         <div class="avatar_border"></div>
+					-->                    </li>
+					<li class="online">
+						<div class="online_status">User 2 is online</div>
+						<!--                         <div class="avatar_border"></div>
+					-->                    </li>
+					<li class="online">
+						<div class="online_status">User 3 is online</div>
+						<!--                         <div class="avatar_border"></div>
+					-->                    </li>
+					<li class="online">
+						<div class="online_status">User 4 is online</div>
+						<!--                         <div class="avatar_border"></div>
+					-->                    </li>
+					<br /><br />
+					<li>
+				<a href="upload.php"><button type="button" class="btn btn-primary active">Upload</button></a>
+					</li>
+					<br />
+					<li>
+					<a href="files.php"><button type="button" class="btn btn-primary active">Download</button></a>
+					</li>
 				</ul>
-		</div>
+			</div>
+
 		<!-- <div class="toolscontainer">
 			<div class="selectchannel">
 				<form action="" method="post">

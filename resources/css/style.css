@@ -53,6 +53,40 @@ body {
 	float: right;
 }
 
+.avatar {
+		width: 220px;
+		height: 220px;
+		border-radius: 50%;
+		background-color: #de2a3d;
+}
+
+.user_info {
+		padding: 15px;
+		border-radius: 6px;
+		background-color: #f8f8f8;
+}
+
+.btn-save {
+		width: 140px;
+		height: 50px;
+		display: inline-block;
+		color: #edeff2;
+		background-color: #de2a3d;
+		border-radius: 50px;
+		border: 2px solid #edeff2;
+		cursor: pointer;
+		transition: all 0.2s linear;
+		text-align: center;
+		float: right;
+		line-height: 2.8;
+}
+
+.btn-save:hover {
+		background-color: #edeff2;
+		color: #de2a3d;
+		border-color: #de2a3d;
+}
+
 /* LOGIN CSS */
 
 .form-signin {

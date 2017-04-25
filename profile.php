@@ -5,69 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login</title>
+		<link href="resources/css/style.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <style type="text/css">
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        min-height: 800px;
-        padding-top: 70px;
-        font-size: 16px;
-        background-color: #edeff2;
-        font-family: "Calibri", "Roboto", sans-serif;
-    }
-
-    .avatar {
-        width: 220px;
-        height: 220px;
-        border-radius: 50%;
-        background-color: #de2a3d;
-    }
-
-    .user_info {
-        padding: 15px;
-        border-radius: 6px;
-        background-color: #f8f8f8;
-    }
-
-    .online_status {
-        display: inline-block;
-        width: calc(100% - 85px);
-        min-width: 150px;
-        height: 50px;
-        border-radius: 20px;
-        background-color: #edeff2;
-        text-align: center;
-        border: 1px solid #bcbdc0;
-        line-height: 48px;
-        font-size: 18px;
-        font-weight: 300;
-    }
-
-    .btn-save {
-        width: 140px;
-        height: 50px;
-        display: inline-block;
-        color: #edeff2;
-        background-color: #de2a3d;
-        border-radius: 50px;
-        border: 2px solid #edeff2;
-        cursor: pointer;
-        transition: all 0.2s linear;
-        text-align: center;
-        float: right;
-        line-height: 2.8;
-    }
-
-    .btn-save:hover {
-        background-color: #edeff2;
-        color: #de2a3d;
-        border-color: #de2a3d;
-    }
-    </style>
+		<title>Login</title>
 </head>
 
 <body>
@@ -86,7 +26,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="dashboard_edited.html">Dashboard</a></li>
+                    <li><a href="dashboard.php">Dashboard</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#">Profile</a></li>
@@ -97,9 +37,7 @@
     </nav>
     <div class="container">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="avatar"></div>
-            </div>
+					<!-- form -->
             <div class="col-sm-6 user_info col-sm-offset-1">
                 <ul>User Info:<br>
                     <li class="online_status">
