@@ -10,7 +10,7 @@ $stmt->execute(array(":uid" => $_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 $userid = $row['u_ID'];
 
-if (isset($_POST['btn-signup'])) {
+if (isset($_POST['btn-save'])) {
 	$username = trim($_POST['input_name']);
 	$email = trim($_POST['input_email']);
 	$password = trim($_POST['input_password']);
@@ -36,11 +36,13 @@ if (isset($_POST['btn-signup'])) {
 
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="resources/css/style.css" rel="stylesheet" media="screen">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<title>Login</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet prefetch" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto+Slab'>
 
 	<style type="text/css">
 		* {
@@ -91,46 +93,66 @@ a:hover {
 		text-align: center;
 }
 
-.avatar {
-		width: 250px;
-		height: 250px;
-		border-radius: 50%;
-		background-color: rgba(109, 42, 93, 0.7);
-		display: inline-block;
+	.avatar {
+			width: 250px;
+			height: 250px;
+			border-radius: 50%;
+			background-color: rgba(109, 42, 93, 0.7);
+			display: inline-block;
+	}
+
+	.user_info {
+			padding: 20px;
+			border-radius: 6px;
+			background-color: rgba(0, 0, 0, 0.55);
+			text-align: center;
+
+	}
+
+	.form_heading {
+			text-align: center;
+			font-size: 20px;
+			padding: 10px 0 20px 0px;
+			color: rgba(256, 256, 256, 0.9);
+	}
+
+	.form-signin {
+	}
+
+	 .form-group {
+	  position: relative;
+	  margin-bottom: 13px;
+	}
+
+    .form-group .fa {
+      position: absolute;
+      right: 60px;
+      top: 17px;
+      color: #999;
 }
 
-.user_info {
-		padding: 15px;
-		border-radius: 6px;
-		background-color: rgba(0, 0, 0, 0.55);
-		text-align: center;
-}
-
-.user_info_heading {
-		text-align: center;
-		font-size: 20px;
-		padding: 10px 0 20px 0px;
-		color: rgba(256, 256, 256, 0.9);
-}
-
-.user_fields {
+/*.user_fields {
 		list-style: none;
 		padding-left: 0px;
-}
+}*/
+
+
 
 .user_field {
 		display: inline-block;
 		width: calc(100% - 85px);
 		min-width: 150px;
-		height: 50px;
 		border-radius: 20px;
-		background-color: #edeff2;
+		font-size: 16px;
 		text-align: center;
-		border: 1px solid #bcbdc0;
 		line-height: 48px;
-		font-size: 18px;
-		font-weight: 300;
+		height: 45px;
+		background-color: #edeff2;
+		border: 2px solid #de2a3d;
+		
 }
+
+
 
 .btn-save {
 		width: 140px;
@@ -141,10 +163,11 @@ a:hover {
 		border-radius: 50px;
 		border: 2px solid #bcbdc0;
 		cursor: pointer;
-		transition: all 0.2s linear;
-		text-align: center;
+/*		transition: all 0.2s linear;
+*/		text-align: center;
 		float: right;
 		line-height: 2.8;
+		margin-top: 10px;
 }
 
 .btn-save:hover {
@@ -153,14 +176,13 @@ a:hover {
 		border-color: #de2a3d;
 }
 /*Media styles*/
-
 @media only screen and (max-width: 568px) {
 		.user_info {
 				margin-top: 10px;
 		}
 		/* .user_info .user_field {
 				width: calc(100% - 50px);
-		}*/
+		}
 </style>
 
 </head>
@@ -199,28 +221,29 @@ a:hover {
 		</div>
 </div>
 			<div class="col-sm-5 col-sm-offset-1 user_info">
+			<div class="form_heading">User Info:</div>
 				<form class="form-signin" method="post">
 
 					<div class="form-group">
 						<label for="inputName" class="sr-only">Name</label>
-						<input type="text" class="form-control" placeholder="<?php echo $row['u_Name']; ?>" name="input_name" required>
+						<input type="text" class="form-control user_field" placeholder="<?php echo $row['u_Name']; ?>" name="input_name" required>
 						<i class="fa fa-user"></i>
 					</div>
 
 					<div class="form-group">
 						<label for="inputEmail" class="sr-only">Email address</label>
-						<input type="email" class="form-control" placeholder="<?php echo $row['u_Email']; ?>" name="input_email" required>
+						<input type="email" class="form-control user_field" placeholder="<?php echo $row['u_Email']; ?>" name="input_email" required>
 						<i class="fa fa-envelope"></i>
 
 					</div>
 
 					<div class="form-group">
 						<label for="inputPassword" class="sr-only">Password</label>
-						<input type="password" class="form-control" placeholder="Password" name="input_password" required>
+						<input type="password" class="form-control user_field" placeholder="Password" name="input_password" required>
 						<i class="fa fa-lock"></i>
 					</div>
 
-					<button class="btn btn-lg btn-primary btn-block" type="submit" name="btn-signup">Save</button>
+					<button class="btn-save" type="submit" name="btn-save">Save</button>
 
 
 				</form>
