@@ -175,6 +175,8 @@ a:hover {
 		color: #de2a3d;
 		border-color: #de2a3d;
 }
+
+
 /*Media styles*/
 @media only screen and (max-width: 568px) {
 		.user_info {

@@ -12,12 +12,16 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html class="no-js">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php echo $row['u_Email']; ?></title>
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto+Slab'>
+
 	<link href="resources/css/style.css" rel="stylesheet" media="screen">
-	<!-- <link rel="stylesheet" type="text/css" href="chat_edited.css"> -->
-	<link href="style.css" rel="stylesheet" media="screen">
+	
 	<script src="ratchat/ajax.js" type="text/javascript"></script>
 	<script src="ratchat/ratax.js" type="text/javascript"></script>
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
