@@ -16,7 +16,6 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 	<title><?php echo $row['u_Email']; ?></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link href="resources/css/style.css" rel="stylesheet" media="screen">
-	<link href="style.css" rel="stylesheet" media="screen">
 	<script src="ratchat/ajax.js" type="text/javascript"></script>
 	<script src="ratchat/ratax.js" type="text/javascript"></script>
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
