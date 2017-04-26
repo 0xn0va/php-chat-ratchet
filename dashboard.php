@@ -16,6 +16,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 	<title><?php echo $row['u_Email']; ?></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link href="resources/css/style.css" rel="stylesheet" media="screen">
+	<link href="style.css" rel="stylesheet" media="screen">
 	<script src="ratchat/ajax.js" type="text/javascript"></script>
 	<script src="ratchat/ratax.js" type="text/javascript"></script>
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -23,17 +24,35 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<script>
-	var chat = new RatChat();
-	function StartChat () {
-		chat.setInput( document.getElementById('newmsg') );
-		chat.setOutput( document.getElementById('chatbox') );
-		chat.setNick( '<?php echo $row['u_Name']; ?>');
-		chat.setChannel('room1');
-		chat.startPolling();
-	}
+			var chat = new RatChat();
+			var chname = 'room1';
+
+		function SelectRoom () {
+				var channelbox = document.getElementById('channelbox');
+				chname = channelbox.options[channelbox.selectedIndex].value;
+				alert("You are entering this room: "+chname);
+				StartChat();
+		}
+
+		function StartChat () {
+				chat.setInput( document.getElementById('newmsg') );
+				chat.setOutput( document.getElementById('chatbox') );
+				chat.setNick( <?php echo $row['u_Name']; ?>);
+				chat.setChannel(chname);
+				chat.startPolling();
+		}
+
+		function AddRoom () {
+				var newroominput = document.getElementById('newroomname');
+				var newroom = newroominput.value;
+				var sysmsg = "Welcome to the room "+newroom+". Enjoy.";
+				alert("You have just created new room: "+newroom+".");
+				chat.addRoom(newroom, sysmsg);
+				newroominput.value = "";
+		}
 	</script>
 </head>
-<body onLoad="StartChat ()">
+<body onLoad="chat.getRooms ();">
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -67,7 +86,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 						<div id="chatbox" class="chatbox"></div>
 						<form action="" method="post">
 							<input id="newmsg">
-							<input type="button" value="Send" onclick="sendMsg()">
+							<input type="button" value="Send" onclick="chat.sendMsg();">
 						</form>
 					</div>
 				</div>
@@ -93,14 +112,19 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 			</div> -->
 			<div class="toolscontainer col-sm-3  col-sm-offset-1 sidebar">
 			 <div >
-				 <h3>Choose a chat room</h3>
-				 <form action="" method="post">
-					 <select size="3" name="channelbox" id="channelbox" class="online">
-						 <option value="room1" class="online_status">Room 1</option>
-						 <option value="room2" class="online_status">Room 2</option>
-					 </select><br>
-					 <button onclick="">Go</button>
-				 </form>
+
+				<div class="selectchannel" id="selectchannel">
+					<h3>Choose a chat room</h3>
+   				  <button onClick="SelectRoom ()">Go</button> 
+					</div>
+
+					<div class="addroom">
+						<form action="" method="post">
+							<input id="newroomname"> 
+							<input type="button" value="Create new room" onclick="AddRoom()">
+						</form>
+					</div>
+
 			 </div>
 		 </div>
 
