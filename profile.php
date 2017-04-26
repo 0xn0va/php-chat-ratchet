@@ -41,39 +41,164 @@ if (isset($_POST['btn-signup'])) {
 	<link href="resources/css/style.css" rel="stylesheet" media="screen">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<title>Login</title>
+
+	<style type="text/css">
+		* {
+		box-sizing: border-box;
+}
+
+body {
+		min-height: 800px;
+		padding-top: 100px;
+		font-size: 16px;
+		background-color: #edeff2;
+		font-family: "Roboto Slab", "Calibri", sans-serif;
+		background-image: url("resources/1.png");
+		background-size: cover;
+}
+
+a:hover {
+		text-decoration: none;
+}
+
+.navbar {
+		padding: 7px;
+		font-size: 18px;
+}
+
+.navbar-inverse .navbar-nav li a,
+.navbar-inverse .navbar-brand {
+		color: #fff;
+}
+
+.navbar-inverse .navbar-nav .active a,
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-nav li a:hover {
+		color: #de2a3d;
+}
+
+.navbar-toggle {
+		background-color: #de2a3d;
+		padding: 12px 10px;
+}
+
+.navbar-inverse .navbar-toggle:focus,
+.navbar-inverse .navbar-toggle:hover {
+		background-color: #de2a3d;
+}
+
+.user_avatar {
+		text-align: center;
+}
+
+.avatar {
+		width: 250px;
+		height: 250px;
+		border-radius: 50%;
+		background-color: rgba(109, 42, 93, 0.7);
+		display: inline-block;
+}
+
+.user_info {
+		padding: 15px;
+		border-radius: 6px;
+		background-color: rgba(0, 0, 0, 0.55);
+		text-align: center;
+}
+
+.user_info_heading {
+		text-align: center;
+		font-size: 20px;
+		padding: 10px 0 20px 0px;
+		color: rgba(256, 256, 256, 0.9);
+}
+
+.user_fields {
+		list-style: none;
+		padding-left: 0px;
+}
+
+.user_field {
+		display: inline-block;
+		width: calc(100% - 85px);
+		min-width: 150px;
+		height: 50px;
+		border-radius: 20px;
+		background-color: #edeff2;
+		text-align: center;
+		border: 1px solid #bcbdc0;
+		line-height: 48px;
+		font-size: 18px;
+		font-weight: 300;
+}
+
+.btn-save {
+		width: 140px;
+		height: 50px;
+		display: inline-block;
+		color: #edeff2;
+		background-color: #de2a3d;
+		border-radius: 50px;
+		border: 2px solid #bcbdc0;
+		cursor: pointer;
+		transition: all 0.2s linear;
+		text-align: center;
+		float: right;
+		line-height: 2.8;
+}
+
+.btn-save:hover {
+		background-color: #edeff2;
+		color: #de2a3d;
+		border-color: #de2a3d;
+}
+/*Media styles*/
+
+@media only screen and (max-width: 568px) {
+		.user_info {
+				margin-top: 10px;
+		}
+		/* .user_info .user_field {
+				width: calc(100% - 50px);
+		}*/
+</style>
+
 </head>
 
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="http://www.oulucoders.com">Oulu Coders</a>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="http://www.oulucoders.com">Oulu Coders</a>
+					</div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div id="navbar" class="navbar-collapse collapse">
+							<ul class="nav navbar-nav">
+									<li><a href="dashboard.php">Dashboard</a></li>
+							</ul>
+							<ul class="nav navbar-nav navbar-right">
+									<li class="active"><a href="profile.php">Profile</a></li>
+									<li><a href="logout.php">Logout</a></li>
+							</ul>
+					</div>
 			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="dashboard.php">Dashboard</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="profile.php">Profile</a></li>
-					<li><a href="logout.php">Logout</a></li>
-				</ul>
-			</div>
-		</div>
 	</nav>
 	<div class="container">
-		<div class="jumbotron">
-			<h2><?php echo $row['u_Name']; ?>! You can change your personal information here.</h2>
-		</div>
+
 		<div class="row">
-			<div class="col-sm-6 user_info col-sm-offset-1">
+			<div class="col-sm-4 col-sm-offset-1">
+		<div class="user_avatar">
+				<div class="avatar"></div>
+		</div>
+</div>
+			<div class="col-sm-5 col-sm-offset-1 user_info">
 				<form class="form-signin" method="post">
 
 					<div class="form-group">

@@ -18,7 +18,7 @@ if (isset($_POST['btn-login'])) {
         $user_login->redirect('dashboard.php');
     }
 }
-?> 
+?>
 
 <!DOCTYPE html>
 <html>
@@ -32,7 +32,7 @@ if (isset($_POST['btn-login'])) {
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto+Slab'>
     <style type="text/css">
     body {
-        background-image: url("resources/1.png");
+        background-image: url("resources/2.jpg");
         background-size: cover;
         font-family: "Roboto Slab", "Calibri", sans-serif;
         color: #edeff2;
@@ -103,5 +103,6 @@ if (isset($_POST['btn-login'])) {
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
+
 
 </html>

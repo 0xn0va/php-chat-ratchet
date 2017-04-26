@@ -1,9 +1,9 @@
 <?php
 $settings = array();
 $settings['dbhost'] = 'localhost';
-$settings['dbuser'] = 'root';
-$settings['dbpass'] = '11235813tima';
-$settings['dbname'] = 'CHAT';
+$settings['dbuser'] = 'erie13';
+$settings['dbpass'] = 'UAclIQIjOZKNbJlF';
+$settings['dbname'] = 'erie_oamk';
 
 @include_once("config.php");
 

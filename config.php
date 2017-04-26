@@ -3,9 +3,9 @@
 class Database
 {
     private $host = "localhost";
-    private $name = "abdotask";
-    private $user = "abdotask";
-    private $pass = "nhzh1SWNSKvFZ8A5";
+    private $name = "erie_oamk";
+    private $user = "erie13";
+    private $pass = "UAclIQIjOZKNbJlF";
     public $con;
 
     public function dbConnection()

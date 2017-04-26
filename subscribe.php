@@ -85,11 +85,11 @@ if (isset($_POST['btn-signup'])) {
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
       <![endif]-->
 
-      <style type="text/css">
+			<style type="text/css">
 
        body {
-        background-image: url("resources/1.png");
-        background-size: cover;
+    background-image: url("resources/2.jpg");
+    background-size: cover;
         font-family: "Roboto Slab", "Calibri", sans-serif;
     }
 

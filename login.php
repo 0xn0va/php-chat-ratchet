@@ -44,7 +44,7 @@ if (isset($_POST['btn-login'])) {
       <style type="text/css">
 
           body {
-            background-image: url("resources/1.png");
+            background-image: url("resources/2.jpg");
             background-size: cover;
             font-family: "Roboto Slab", "Calibri", sans-serif;
         }
