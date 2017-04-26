@@ -39,10 +39,10 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 						</div>
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
-								<li class="active"><a href="#">Dashboard</a></li>
+								<li class="active"><a href="dashboard.php">Dashboard</a></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="profile.html">Profile</a></li>
+								<li><a href="profile.php">Profile</a></li>
 								<li><a href="logout.php">Logout</a></li>
 							</ul>
 						</div>

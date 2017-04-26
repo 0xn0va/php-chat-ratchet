@@ -39,10 +39,10 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 						</div>
 						<div id="navbar" class="navbar-collapse collapse">
 							<ul class="nav navbar-nav">
-								<li class="active"><a href="#">Dashboard</a></li>
+								<li class="active"><a href="dashboard.php">Dashboard</a></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="profile.html">Profile</a></li>
+								<li><a href="profile.php">Profile</a></li>
 								<li><a href="logout.php">Logout</a></li>
 							</ul>
 						</div>
@@ -51,38 +51,20 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 			</div>
 		</div>
 		<div>
-			<table class="table" >
-			<tr>
-				<td>Uploader</td>
-				<td>File Name</td>
-				<td>Type</td>
-				<td>Size/KB</td>
-				<td>Download</td>
-			</tr>
 
 			<?php
-			//TODO need to upload queries accoring new database
-			$sql1="SELECT * FROM files";
-			$result1=mysql_query($sql1);
-			while($row=mysql_fetch_array($result1))
-			{
-				$userid = $row['u_ID'];
-				$sql2="SELECT name from users where id = '$userid'";
-				$result2=mysql_query($sql2);
-				$row2=mysql_fetch_array($result2);
+  if ($handle = opendir('uploads/')) {
+    while (false !== ($file = readdir($handle))) {
+      if ($file != "." && $file != "..") {
+        $thelist .= '<li><a href="uploads/'.$file.'">'.$file.'</a></li>';
+      }
+    }
+    closedir($handle);
+  }
+?>
+<h1>List of files:</h1>
+<ul><?php echo $thelist; ?></ul>
 
-				?>
-				<tr>
-					<td><?php echo $row2['name'] ?></td>
-					<td><?php echo $row['file'] ?></td>
-					<td><?php echo $row['type'] ?></td>
-					<td><?php echo $row['size'] ?></td>
-					<td><a href="uploads/<?php echo $row['file'] ?>" target="_blank">Click</a></td>
-				</tr>
-				<?php
-			}
-			?>
-		</table>
 	</div>
 
 </div>
