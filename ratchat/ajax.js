@@ -13,9 +13,10 @@ function RatChat() {
 	var input = null;
 	var output = null;
 	var channel = 0;
-	var pollFreq = 5;
+	var pollFreq = 30;
 	var pollInterval = null;
 	var that = this;
+	var channelbox = document.createElement('SELECT');
 
 	//alert('it works, ajax.js');
 
@@ -72,6 +73,30 @@ function RatChat() {
 	// Send a message to the active channel
 	this.post = function (msg) { return xhr.call('post',{'chanid':channel,'msg':msg},null,false); }
 	
+	//NEW FUNCTION. Add new room
+	this.addRoom = function (newchannel,sysmsg) { return xhr.call('addRoom',{'newchannel':newchannel,'sysmsg':sysmsg},null,false); }
+
+	//NEW FUNCTION. Get existing rooms
+	this.getRooms = function () {
+		var m = xhr.call('getRooms',null,null,false);
+		channelbox.className = 'channelbox';
+		channelbox.size = 3;
+		channelbox.id = "channelbox";
+		for ( var i=0 ; i < m.length ; i++ ) {
+			displayRooms(m[i]);
+		}
+		document.getElementById('selectchannel').appendChild(channelbox);
+		return m;}
+
+	//NEW FUNCTION. Display existing rooms
+	function displayRooms(m) {
+		var option = document.createElement('OPTION');
+		option.appendChild(document.createTextNode(m.chanid));
+		option.value = m.chanid;
+
+		channelbox.appendChild(option);
+	}
+
 	// Obtener los mensajes del canal activo
 	// Get active channel messages
 	this.get = function () {
@@ -124,7 +149,7 @@ function RatChat() {
 		// Contenido
 		// Content
 		ts.appendChild(document.createTextNode(m.time.replace(/^.*? ([0-9]{2}:[0-9]{2})...$/,'$1') ));
-		name.title = 'Fecha/Hora: '+m.time;
+		name.title = 'Date/Time: '+m.time;
 		name.appendChild( document.createTextNode(m.userid) );
 		msg.appendChild( document.createTextNode(m.msg) );
 		

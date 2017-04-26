@@ -24,6 +24,17 @@ switch ($data->method) {
 	case 'setNick':
 		$ret->result = setNick($params->nick);
 		break;
+	case 'addRoom':
+		if ( !isset($params->sysmsg)||!isset($params->newchannel) ) {
+			$ret->error='Bad msg';
+			break;
+		}
+		addRoom($params->newchannel, $params->sysmsg);
+		$ret->result = "ACK";
+		break;
+	case 'getRooms':
+		$ret->result = getRooms();
+		break;
 
 	case 'getNick':
 		$ret->result = getNick();
