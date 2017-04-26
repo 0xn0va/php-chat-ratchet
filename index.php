@@ -16,7 +16,7 @@
         color: #edeff2;
         box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
     }
-    
+
     /*.cover-wrapper {
         display: table;
         width: 100%;
@@ -24,7 +24,7 @@
         min-height: 100%;
         -webkit-box-shadow: inset 0 0 100px rgba(0, 0, 0, .5);
     }
-    
+
     .wrapper {
         display: table-cell;
         vertical-align: top;
@@ -34,11 +34,11 @@
         color: #edeff2;
         text-decoration: none;
     }
-    
+
     a:hover {
         color: #de2a3d;
     }
-    
+
     .login--toggle-container {
         position: absolute;
         top: 40%;
@@ -56,7 +56,7 @@
         transition: all 1s cubic-bezier(0.06, 0.63, 0, 1);
         backface-visibility: hidden;*/
     }
-    
+
     .login--toggle-container .js-toggle-login {
         font-size: 4em;
         text-decoration: underline;

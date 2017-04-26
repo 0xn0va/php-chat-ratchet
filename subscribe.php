@@ -1,12 +1,7 @@
 <?php
-
-
 session_start();
-
 require_once 'main.php';
-
 $new_msg = new main();
-
 if ($new_msg->is_logged_in() != "") {
     $new_msg->redirect('dashboard.php');
 }
