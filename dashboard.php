@@ -47,7 +47,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Dashboard</a></li>
+					<li class="active"><a href="dashboard.php">Dashboard</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="profile.php">Profile</a></li>
@@ -73,47 +73,43 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 				</div>
 			</div>
 
-			<div class="col-sm-3  col-sm-offset-1 sidebar">
+			<!-- <div class="col-sm-3  col-sm-offset-1 sidebar">
 				<ul class="users">
 					<li class="online">
-						<div class="online_status">User 1 is online</div>
-						<!--                         <div class="avatar_border"></div>
-					-->                    </li>
+						<div class="online_status">Room 1</div>
+			                     </li>
 					<li class="online">
-						<div class="online_status">User 2 is online</div>
-						<!--                         <div class="avatar_border"></div>
-					-->                    </li>
+						<div class="online_status">Room 2</div>
+			                  </li>
 					<li class="online">
-						<div class="online_status">User 3 is online</div>
-						<!--                         <div class="avatar_border"></div>
-					-->                    </li>
+						<div class="online_status">Room 3</div>
+	                  </li>
 					<li class="online">
-						<div class="online_status">User 4 is online</div>
-						<!--                         <div class="avatar_border"></div>
-					-->                    </li>
-					<br /><br />
-					<li>
-				<a href="upload.php"><button type="button" class="btn btn-primary active">Upload</button></a>
-					</li>
-					<br />
-					<li>
-					<a href="files.php"><button type="button" class="btn btn-primary active">Download</button></a>
-					</li>
-				</ul>
-			</div>
+						<div class="online_status">Room 4</div>
+			                  </li>
 
-		<!-- <div class="toolscontainer">
-			<div class="selectchannel">
-				<form action="" method="post">
-					<select size="3" name="channelbox" id="channelbox">
-						<option disabled>Choose the chat room</option>
-						<option value="room1">1</option>
-						<option value="room2">2</option>
-					</select><br>
-					<button onclick="">Go</button>
-				</form>
-			</div>
-		</div> -->
+				</ul>
+
+			</div> -->
+			<div class="toolscontainer col-sm-3  col-sm-offset-1 sidebar">
+			 <div >
+				 <h3>Choose a chat room</h3>
+				 <form action="" method="post">
+					 <select size="3" name="channelbox" id="channelbox" class="online">
+						 <option value="room1" class="online_status">Room 1</option>
+						 <option value="room2" class="online_status">Room 2</option>
+					 </select><br>
+					 <button onclick="">Go</button>
+				 </form>
+			 </div>
+		 </div>
+
+
+									<a href="#" onClick="window.open('upload.php','Upload','resizable,height=560,width=670'); return false;"><button type="button" class="btn btn-primary active">Upload</button></a><noscript>You need Javascript to use the previous link or use <a href="upload.php" target="_blank"><button type="button" class="btn btn-primary active">Upload</a></noscript>
+
+										<a href="#" onClick="window.open('files.php','Files','resizable,height=560,width=670'); return false;"><button type="button" class="btn btn-primary active">Download</button></a><noscript>You need Javascript to use the previous link or use <a href="files.php" target="_blank"><button type="button" class="btn btn-primary active">Download</a></noscript>
+
+
 	</div>
 	</div>
 	<!-- Placed at the end of the document so the pages load faster -->
