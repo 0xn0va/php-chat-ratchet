@@ -16,6 +16,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 	<title><?php echo $row['u_Email']; ?></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link href="resources/css/style.css" rel="stylesheet" media="screen">
+	<link href="style.css" rel="stylesheet" media="screen">
 	<script src="ratchat/ajax.js" type="text/javascript"></script>
 	<script src="ratchat/ratax.js" type="text/javascript"></script>
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -31,6 +32,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 				chname = channelbox.options[channelbox.selectedIndex].value;
 				alert("You are entering this room: "+chname);
 				StartChat();
+				channelbox.disabled=true;
 		}
 
 		function StartChat () {
@@ -48,6 +50,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 				alert("You have just created new room: "+newroom+".");
 				chat.addRoom(newroom, sysmsg);
 				newroominput.value = "";
+				window.location.reload();
 		}
 	</script>
 </head>
@@ -85,7 +88,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 						<div id="chatbox" class="chatbox"></div>
 						<form action="" method="post">
 							<input id="newmsg">
-							<input type="button" value="Send" onclick="chat.sendMsg();">
+							<input type="button" value="Send" onclick="chat.sendMsg(); alert(chname);">
 						</form>
 					</div>
 				</div>
