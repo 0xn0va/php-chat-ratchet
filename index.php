@@ -1,3 +1,25 @@
+<?php
+
+
+session_start();
+
+require_once 'main.php';
+$user_login = new main();
+
+if ($user_login->is_logged_in() != "") {
+    $user_login->redirect('dashboard.php');
+}
+
+if (isset($_POST['btn-login'])) {
+    $email = trim($_POST['input_email']);
+    $password = trim($_POST['input_password']);
+
+    if ($user_login->login($email, $password)) {
+        $user_login->redirect('dashboard.php');
+    }
+}
+?> 
+
 <!DOCTYPE html>
 <html>
 

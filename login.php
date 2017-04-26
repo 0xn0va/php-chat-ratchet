@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 
 
 session_start();
@@ -18,7 +18,7 @@ if (isset($_POST['btn-login'])) {
         $user_login->redirect('dashboard.php');
     }
 }
-?>  -->
+?>
 
 <!DOCTYPE html>
 <html>
@@ -66,7 +66,7 @@ if (isset($_POST['btn-login'])) {
         .btn {
             font-size: 18px;
         }
-        
+
          .btn:hover {
             color: #de2a3d;
         }
@@ -168,6 +168,6 @@ if (isset($_POST['btn-login'])) {
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
        <script src="resources/index.js"></script>
-    
+
 </body>
 </html>
