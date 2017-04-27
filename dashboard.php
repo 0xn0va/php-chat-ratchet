@@ -8,6 +8,10 @@ if (!$user_home->is_logged_in()) {
 $stmt = $user_home->runQuery("SELECT * FROM users WHERE u_ID=:uid");
 $stmt->execute(array(":uid" => $_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$userEmail = $row['u_Email'];
+
+$gravatarUrlNav = $user_home->get_gravatar($userEmail, $s = 46, $d = 'mm');
 ?>
 
 <!doctype html>
@@ -289,6 +293,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
                     <li class="active"><a href="dashboard.php">Dashboard</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+									<li><img src="<?php echo $gravatarUrlNav; ?>" alt="Avatar"></li>
                     <li><a href="profile.php">Profile</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
