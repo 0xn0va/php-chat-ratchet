@@ -61,7 +61,7 @@ class main
 			if ($result->rowCount() == 1) {
 				if ($userRow['u_Status'] == "Y") {
 					if ($passhash == crypt($password, $passhash)) {
-						$_SESSION['userSession'] = $userRow['u_ID'];
+						$_SESSION['nick'] = $userRow['u_Name'];
 						return true;
 					} else {
 						header("Location: index.php?error");
@@ -82,7 +82,7 @@ class main
 
 	public function is_logged_in()
 	{
-		if (isset($_SESSION['userSession'])) {
+		if (isset($_SESSION['nick'])) {
 			return true;
 		}
 	}
@@ -108,7 +108,7 @@ class main
 	public function logout()
 	{
 		session_destroy();
-		$_SESSION['userSession'] = false;
+		$_SESSION['nick'] = false;
 	}
 
 	function send_mail($email, $message, $subject)

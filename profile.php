@@ -5,8 +5,8 @@ $new_msg = new main();
 if (!$new_msg->is_logged_in()) {
 	$new_msg->redirect('index.php');
 }
-$stmt = $new_msg->runQuery("SELECT * FROM users WHERE u_ID=:uid");
-$stmt->execute(array(":uid" => $_SESSION['userSession']));
+$stmt = $new_msg->runQuery("SELECT * FROM users WHERE u_Name=:uname");
+$stmt->execute(array(":uname" => $_SESSION['nick']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 $userid = $row['u_ID'];
 

@@ -5,8 +5,8 @@ $user_home = new main();
 if (!$user_home->is_logged_in()) {
     $user_home->redirect('index.php');
 }
-$stmt = $user_home->runQuery("SELECT * FROM users WHERE u_ID=:uid");
-$stmt->execute(array(":uid" => $_SESSION['userSession']));
+$stmt = $user_home->runQuery("SELECT * FROM users WHERE u_Name=:uname");
+$stmt->execute(array(":uname" => $_SESSION['nick']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $userEmail = $row['u_Email'];
@@ -47,7 +47,6 @@ $gravatarUrlNav = $user_home->get_gravatar($userEmail, $s = 46, $d = 'mm');
         function StartChat () {
             chat.setInput( document.getElementById('newmsg') );
             chat.setOutput( document.getElementById('messages') );
-            chat.setNick( <?php echo $row['u_Name']; ?>);
             chat.setChannel(chname);
             chat.startPolling();
         }
@@ -172,7 +171,7 @@ $gravatarUrlNav = $user_home->get_gravatar($userEmail, $s = 46, $d = 'mm');
             text-align: center;
         }
 
-        .bottom .buttons {
+        .bottom .buttons, .addroom .buttons {
             width: 115px;
             display: inline-block;
             border-radius: 20px;
@@ -191,7 +190,7 @@ $gravatarUrlNav = $user_home->get_gravatar($userEmail, $s = 46, $d = 'mm');
         }
 
         .sidebar .rooms .room:hover,
-        .bottom .buttons:hover {
+        .bottom .buttons:hover, .addroom .buttons:hover {
             background-color: rgba(237, 239, 242, 0.9);
             ;
             border-color: #de2a3d;
@@ -206,6 +205,10 @@ $gravatarUrlNav = $user_home->get_gravatar($userEmail, $s = 46, $d = 'mm');
             .sidebar .room {
                 width: calc(100% - 50px);
             }
+
+            .addroom .buttons {
+                width: calc(100% - 80px);
+            } 
         }
     /* @media only screen and (orientation: landscape) {
         .sidebar {
@@ -214,11 +217,35 @@ $gravatarUrlNav = $user_home->get_gravatar($userEmail, $s = 46, $d = 'mm');
     }*/
 
 
-    /*Styles from Abdo*/
-
-    #newmsg { /*new message styling, could borrow from messages*/
-        width: 90%;
+    /*The chat room name text field wrapper */
+    .room_wrapper { 
+        display: inline-block;
+        height: 50px;
+        border-radius: 25px;
+        border: 1px solid #bcbdc0;
+        width: calc(100% - 20px);
+        position: relative;
     }
+
+    /*The chat room name text field*/
+
+    #newroomname { 
+        border: none;
+        height: 100%;
+        box-sizing: border-box;
+        width: calc(100% - 10px);
+        color: rgba(256, 256, 256, 0.9);
+        background-color: transparent;
+        text-align: center;
+    }
+
+    #newroomname:focus, .addroom .buttons:focus, .channelbox:focus  {
+        outline: none;
+        /*border:1px solid red;
+        box-shadow: 0 0 10px #719ECE;*/
+    }
+
+    
 
     .timestamp { /*Not used yet?*/
         font-size: 16px;
@@ -264,12 +291,26 @@ $gravatarUrlNav = $user_home->get_gravatar($userEmail, $s = 46, $d = 'mm');
 
     }
 
-.channelbox {
-    width: 80%;
-    font-size: 16px;
-    border: 1px solid darkgrey;
-    border-radius: 5px;
+    .addroom .buttons {
+        margin-top: 10px;
+        width: calc(100% - 80px);
+    }
+
+    .channelbox {
+        width: 80%;
+/*      font-size: 16px;
+*/      border: 1px solid darkgrey;
+        border-radius: 5px;
+        overflow: overlay;
+        background-color: transparent;
+        color: rgba(256, 256, 256, 0.9);
 }
+
+/*Selected option from the chat room list - Doesn't work yet*/
+select.channelbox option:checked {
+    background-color: #de2a3d;
+}
+
 
 </style>
 </head>
@@ -293,42 +334,40 @@ $gravatarUrlNav = $user_home->get_gravatar($userEmail, $s = 46, $d = 'mm');
                     <li class="active"><a href="dashboard.php">Dashboard</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-									<li><img src="<?php echo $gravatarUrlNav; ?>" alt="Avatar"></li>
-                    <li><a href="profile.php">Profile</a></li>
-                    <li><a href="logout.php">Logout</a></li>
-                </ul>
+                 <li><img src="<?php echo $gravatarUrlNav; ?>" alt="Avatar"></li>
+                 <li><a href="profile.php">Profile</a></li>
+                 <li><a href="logout.php">Logout</a></li>
+             </ul>
+         </div>
+     </div>
+ </nav>
+ <div class="container">
+    <div class="jumbotron">
+        <h2>Hello, <?php echo $row['u_Name']; ?>! How are you today?</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-8 chat_window">
+            <div class="top_menu">
+                <div class="title">Chat</div>
             </div>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="jumbotron">
-            <h2>Hello, <?php echo $row['u_Name']; ?>! How are you today?</h2>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-8 chat_window">
-                <div class="top_menu">
-                    <div class="title">Chat</div>
-                </div>
+            <div class="messages" id="messages"> <!-- Is it better to keep it as ul, so new messages can be pushed as li's?? -->
 
-                <div class="messages" id="messages"> <!-- Is it better to keep it as ul, so new messages can be pushed as li's?? -->
-
-                </div>
-                >
-
-                <div class="bottom_wrapper clearfix">
-
-                    <form action="" method="post">
-                        <div class="message_input_wrapper">
-                            <input id="newmsg" class="message_input" placeholder="Type your message here..." />
-                        </div>
+            </div>
 
 
-                        <button class="send_message" onclick="chat.sendMsg();">Send
-                        </button>
-                    </form>
+            <div class="bottom_wrapper clearfix">
 
-                </div>
+                <form action="" method="post">
+                    <div class="message_input_wrapper">
+                        <input id="newmsg" class="message_input" placeholder="Type your message here..." />
+                    </div>
+                    <input type="button" class="send_message" value="Send" onclick="chat.sendMsg();">
+
+
+                </form>
+            </div>
 
 
 
@@ -347,13 +386,15 @@ $gravatarUrlNav = $user_home->get_gravatar($userEmail, $s = 46, $d = 'mm');
                 <div class="sidebar">
                     <div class="selectchannel" id="selectchannel">
                         <h3>Choose the Chat Room:</h3>
-                        <button onClick="SelectRoom ()">Go</button>
+                        <button onClick="SelectRoom ()" id="go_button">Go</button>
                     </div>
 
                     <div class="addroom">
                         <form action="" method="post">
-                            <input id="newroomname">
-                            <input type="button" value="Create new room" onclick="AddRoom()">
+                            <div class="room_wrapper">
+                                <input id="newroomname">
+                            </div>
+                            <input type="button" class="buttons" value="Room++" onclick="AddRoom()">
                         </form>
                     </div>                </div>
 
