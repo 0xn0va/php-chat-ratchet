@@ -10,6 +10,13 @@ $stmt->execute(array(":uid" => $_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 $userid = $row['u_ID'];
 
+$userEmail = $row['u_Email'];
+
+$gravatarUrl = $new_msg->get_gravatar($userEmail, $s = 250, $d = 'mm');
+
+$gravatarUrlNav = $new_msg->get_gravatar($userEmail, $s = 46, $d = 'mm');
+
+
 if (isset($_POST['btn-save'])) {
 	$username = trim($_POST['input_name']);
 	$email = trim($_POST['input_email']);
@@ -99,6 +106,7 @@ a:hover {
 			border-radius: 50%;
 			background-color: rgba(109, 42, 93, 0.7);
 			display: inline-block;
+
 	}
 
 	.user_info {
@@ -149,7 +157,7 @@ a:hover {
 		height: 45px;
 		background-color: #edeff2;
 		border: 2px solid #de2a3d;
-		
+
 }
 
 
@@ -178,13 +186,13 @@ a:hover {
 
 
 /*Media styles*/
-@media only screen and (max-width: 568px) {
+/*@media only screen and (max-width: 568px) {
 		.user_info {
 				margin-top: 10px;
-		}
+		}*/
 		/* .user_info .user_field {
 				width: calc(100% - 50px);
-		}
+		}*/
 </style>
 
 </head>
@@ -208,6 +216,7 @@ a:hover {
 									<li><a href="dashboard.php">Dashboard</a></li>
 							</ul>
 							<ul class="nav navbar-nav navbar-right">
+								<li><img src="<?php echo $gravatarUrlNav; ?>" alt="Avatar"></li>
 									<li class="active"><a href="profile.php">Profile</a></li>
 									<li><a href="logout.php">Logout</a></li>
 							</ul>
@@ -219,7 +228,10 @@ a:hover {
 		<div class="row">
 			<div class="col-sm-4 col-sm-offset-1">
 		<div class="user_avatar">
-				<div class="avatar"></div>
+				<div class="avatar">
+					 <img src="<?php echo $gravatarUrl; ?>" alt="Avatar">
+				 </div><br />
+				 <a href="http://en.gravatar.com/emails/">Change your avatar</a>
 		</div>
 </div>
 			<div class="col-sm-5 col-sm-offset-1 user_info">

@@ -8,6 +8,9 @@ if (!$user_home->is_logged_in()) {
 $stmt = $user_home->runQuery("SELECT * FROM users WHERE u_ID=:uid");
 $stmt->execute(array(":uid" => $_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$userEmail = $row['u_Email'];
+$gravatarUrlNav = $user_home->get_gravatar($userEmail, $s = 46, $d = 'mm');
 ?>
 <!DOCTYPE html>
 <html class="no-js">
@@ -21,7 +24,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto+Slab'>
 
 	<link href="resources/css/style.css" rel="stylesheet" media="screen">
-	
+
 	<script src="ratchat/ajax.js" type="text/javascript"></script>
 	<script src="ratchat/ratax.js" type="text/javascript"></script>
 	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -231,6 +234,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 					<li class="active"><a href="dashboard.php">Dashboard</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+					<li><img src="<?php echo $gravatarUrlNav; ?>" alt="Avatar"></li>
 					<li><a href="profile.php">Profile</a></li>
 					<li><a href="logout.php">Logout</a></li>
 				</ul>
