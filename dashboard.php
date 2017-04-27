@@ -43,7 +43,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
         function StartChat () {
             chat.setInput( document.getElementById('newmsg') );
             chat.setOutput( document.getElementById('messages') );
-            chat.setNick( <?php echo $row['u_Name']; ?> );
+            chat.setNick( <?php echo $row['u_Name']; ?>);
             chat.setChannel(chname);
             chat.startPolling();
         }
