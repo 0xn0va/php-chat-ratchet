@@ -46,7 +46,7 @@ if (isset($_POST['btn-signup'])) {
                     <br />
                     You subscribed!<br/>
                     You just need to click on the following link to verify your email<br/>
-                    <a href='http://localhost/liana/abdo/verification.php?id=$id&code=$verification'>CLICK ON ME!</a><br />
+                    <a href='http://chat.oulucoders.com/verification.php?id=$id&code=$verification'>CLICK ON ME!</a><br />
                     Best Regards,";
 
                     $subject = "Verify Subscription";
